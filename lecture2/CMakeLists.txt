@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(lecture_2)
 
-include_directories(part_1)
-add_executable(cpp_basics part_1/cpp_basics.cpp part_1/tools.cpp)
+#include_directories(part_1)
+#add_executable(cpp_basics part_1/cpp_basics.cpp part_1/tools.cpp)
 
 
 # find_package(OpenCV REQUIRED)
@@ -12,4 +12,17 @@ add_executable(cpp_basics part_1/cpp_basics.cpp part_1/tools.cpp)
 
 # add_executable(lightbar_detection part_3/lightbar_detection..cpp)
 # target_link_libraries(lightbar_detection ${OpenCV_LIBS})
+
+#homework1
+find_package(fmt REQUIRED)
+add_executable(fmt_test homework/fmt_test.cpp)
+target_link_libraries(fmt_test PRIVATE fmt::fmt)
+#homework2
+find_package(OpenCV REQUIRED)
+find_package(fmt REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(include)
+add_executable(main homework/main.cpp)
+target_sources(main PRIVATE homework/tools.cpp)
+target_link_libraries(main ${OpenCV_LIBS} fmt::fmt)
 
