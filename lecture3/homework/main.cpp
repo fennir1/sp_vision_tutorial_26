@@ -2,7 +2,6 @@
 #include "tasks/yolo.hpp"
 #include "opencv2/opencv.hpp"
 #include "tools/img_tools.hpp"
-#include <iostream>
 int main() {
     // 1. 初始化相机
     myCamera camera;
@@ -22,7 +21,6 @@ int main() {
         
         // 使用YOLO检测装甲板
         std::list<auto_aim::Armor> armors = yolo_detector.detect(frame, frame_count);
-        std::cout << "帧 " << frame_count << ": 检测到 " << armors.size() << " 个装甲板" << std::endl;
         // 在图像上绘制检测结果
         cv::Mat result_frame = frame.clone();
         for (const auto& armor : armors) 
